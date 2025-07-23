@@ -1,5 +1,5 @@
 [project]
-name = "gotenberg_api"
+name = "gotenberg-api"
 version = "0.1.0"
 description = "Library for generating site screenshots with Gotenberg"
 readme = "README.md"
