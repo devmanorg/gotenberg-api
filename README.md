@@ -13,7 +13,8 @@
 - базовый адрес Gotenberg API
 - ширина скриншота в пикселях
 - формат скриншота (может принимать значения `jpeg`, `png`, `webp`). По-умолчанию - `jpeg`.
-- время ожидания завершения генерации. По-умолчанию - 2 секунды.
+- время ожидания завершения анимаций на html-странице. По-умолчанию - 2 секунды.
+    - Важно: эта настройка должна быть меньше значения таймаута [асинхронного клиента](https://www.python-httpx.org/api/#asyncclient), иначе библиотека будет всегда возвращать `TimeoutError`. Рекомендуемый диапазон различия: 2-5 секунд.
 - опциональные настройки [асинхронного клиента](https://www.python-httpx.org/api/#asyncclient)
 
 Пример запроса:
@@ -24,7 +25,10 @@ import httpx
 from gotenberg_api import GotenbergServerError, ScreenshotHTMLRequest
 
  try:
-    async with httpx.AsyncClient(base_url=settings_var.get().GOTENBERG_URL) as client:
+    async with httpx.AsyncClient(
+        base_url=settings_var.get().GOTENBERG_URL, 
+        timeout=15,
+    ) as client:
         screenshot_bytes = await ScreenshotHTMLRequest(
             index_html=raw_html,
             width=1000,

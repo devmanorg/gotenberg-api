@@ -1,7 +1,7 @@
 from typing import Literal
 
 import httpx
-from pydantic import BaseModel, ConfigDict, PositiveInt
+from pydantic import BaseModel, ConfigDict, PositiveFloat, PositiveInt
 
 from ._exceptions import GotenbergServerError
 
@@ -21,7 +21,7 @@ class ScreenshotHTMLRequest(BaseModel):
     width: PositiveInt
     """Width to resize screen to before screenshot making. Pixels number."""
     format: Literal["png", "jpeg", "webp"] = "jpeg"
-    wait_delay: PositiveInt = 2
+    wait_delay: PositiveFloat = 2
 
     model_config = request_schema_config
 
