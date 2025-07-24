@@ -1,10 +1,19 @@
 # Gotenberg API
 
-Библиотека Gotenberg API упрощает работу с endpoint API для генерации скриншотов [gotenberg.dev](https://gotenberg.dev/docs/routes#screenshots-route), предоставляя тонкую обёртку над веб API и библиотекой HTTPX: добавляет к обычным возможностям HTTPX свои схемы данных, а также удобные, часто используемые функции, но не мешает, при необходимости, спускаться ниже на уровень HTTP-запросов.
+Библиотека Gotenberg API упрощает работу с endpoint API для генерации скриншотов [gotenberg.dev](https://gotenberg.dev/docs/routes#screenshots-route), предоставляя тонкую обёртку над веб API и библиотекой [HTTPX](https://www.python-httpx.org/).
+
+Она добавляет к обычным возможностям [HTTPX](https://www.python-httpx.org/) свои схемы данных, а также удобные, часто используемые функции, но не мешает, при необходимости, спускаться ниже на уровень HTTP-запросов.
 
 ## Использование
 
-Библиотека использует асинхронный клиент.
+Библиотека использует [асинхронный HTTPX клиент](https://www.python-httpx.org/api/#asyncclient).
+
+Для запуска требуется указать следующие настройки:
+
+- базовый адрес Gotenberg API
+- ширина скриншота в пикселях
+- формат скриншота (может принимать значения `jpeg`, `png`, `webp`). По-умолчанию - `jpeg`.
+- опциональные настройки [асинхронного клиента](https://www.python-httpx.org/api/#asyncclient)
 
 Пример запроса:
 
@@ -18,6 +27,7 @@ from gotenberg_api import GotenbergServerError, ScreenshotHTMLRequest
         screenshot_bytes = await ScreenshotHTMLRequest(
             index_html=raw_html,
             width=1000,
+            format='png',
         ).asend(client)
 except GotenbergServerError as e:
     logger.error(e)

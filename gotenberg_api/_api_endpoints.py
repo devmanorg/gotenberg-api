@@ -34,6 +34,7 @@ class ScreenshotHTMLRequest(BaseModel):
                     "format": (None, self.format),
                     "skipNetworkIdleEvent ": (None, "false"),
                     "waitForExpression": (None, "document.readyState === 'complete'"),
+                    "waitDelay": (None, "2s"),
                 },
             )
             response.raise_for_status()
