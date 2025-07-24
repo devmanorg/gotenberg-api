@@ -13,6 +13,7 @@
 - базовый адрес Gotenberg API
 - ширина скриншота в пикселях
 - формат скриншота (может принимать значения `jpeg`, `png`, `webp`). По-умолчанию - `jpeg`.
+- время ожидания завершения генерации. По-умолчанию - 2 секунды.
 - опциональные настройки [асинхронного клиента](https://www.python-httpx.org/api/#asyncclient)
 
 Пример запроса:
@@ -28,6 +29,7 @@ from gotenberg_api import GotenbergServerError, ScreenshotHTMLRequest
             index_html=raw_html,
             width=1000,
             format='png',
+            wait_delay=5,
         ).asend(client)
 except GotenbergServerError as e:
     logger.error(e)
