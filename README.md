@@ -4,6 +4,17 @@
 
 Она добавляет к обычным возможностям [HTTPX](https://www.python-httpx.org/) свои схемы данных, а также удобные, часто используемые функции, но не мешает, при необходимости, спускаться ниже на уровень HTTP-запросов.
 
+## Установка
+
+Вы можете установить библиотеку с помощью `pip`:
+```shell
+# Установить из публичного GitHub репозитория (рекомендуемый способ)
+$ pip install git+https://github.com/devmanorg/gotenberg-api.git
+
+# Установить из приватного GitLab репозитория (если у вас есть к нему доступ)
+$ pip install git+https://gitlab.dvmn.org/dvmn/courses/fastapi/gotenberg-api.git
+```
+
 ## Использование
 
 Библиотека использует [асинхронный HTTPX клиент](https://www.python-httpx.org/api/#asyncclient).
