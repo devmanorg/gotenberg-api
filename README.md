@@ -21,10 +21,10 @@ $ pip install git+https://gitlab.dvmn.org/dvmn/courses/fastapi/gotenberg-api.git
 
 Для запуска требуется указать следующие настройки:
 
-- базовый адрес Gotenberg API
-- ширина скриншота в пикселях
-- формат скриншота (может принимать значения `jpeg`, `png`, `webp`). По-умолчанию - `jpeg`.
-- время ожидания завершения анимаций на html-странице. По-умолчанию - 2 секунды.
+- `httpx.AsyncClient.base_url` - базовый адрес [Gotenberg API](https://gotenberg.dev/docs/getting-started/installation#live-demo-). Обязательная настройка.
+- `ScreenshotHTMLRequest.width` - ширина скриншота в пикселях. Обязательная настройка.
+- `ScreenshotHTMLRequest.format` - формат скриншота (может принимать значения `jpeg`, `png`, `webp`). По-умолчанию - `jpeg`.
+- `ScreenshotHTMLRequest.wait_delay` - время ожидания завершения анимаций на html-странице. По-умолчанию - 2 секунды.
 - опциональные настройки [асинхронного клиента](https://www.python-httpx.org/api/#asyncclient)
 
 **Важно:** время ожидания завершения анимаций должно быть меньше таймаута [асинхронного клиента](https://www.python-httpx.org/api/#asyncclient), иначе библиотека всегда будет возвращать `TimeoutError`.  
